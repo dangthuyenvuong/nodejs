@@ -1,5 +1,8 @@
 version: '3.1'
 
+
+
+
 services:
     db:
         image: mysql
@@ -9,6 +12,8 @@ services:
             MYSQL_ROOT_PASSWORD: example
         ports:
             - 3306:3306
+        volumes:
+            - dir-site:/var/lib/mysql
             
     adminer:
         image: adminer
@@ -16,3 +21,12 @@ services:
         ports:
             - 8080:8080
             
+
+
+volumes:
+    dir-site:
+        driver: local
+        driver_opts:
+            device: ./data/
+            type: none
+            o: bind

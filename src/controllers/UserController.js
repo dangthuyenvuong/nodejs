@@ -5,7 +5,7 @@ import validate from '../utils/validate.js'
 
 const UserController = {
     getInfo(req, res) {
-        res.json({ success: req.user })
+        res.json({ data: req.user })
     },
     async updateInfo(req, res) {
         // let { fullName, birthday, avatar } = req.body

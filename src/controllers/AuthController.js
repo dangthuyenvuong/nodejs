@@ -64,10 +64,10 @@ const AuthController = {
             return res.status(BAD_REQUEST).json({ errors: error, error_message: 'Validate failed' })
 
         } catch (error) {
-            const check = error.errors.find(e => e.path === 'username' && e.validatorKey === 'not_unique')
-            if (check) {
-                return res.json({ error: 'Username đã tồn tại' })
-            }
+            // const check = error.errors.find(e => e.path === 'username' && e.validatorKey === 'not_unique')
+            // if (check) {
+            //     return res.json({ error: 'Username đã tồn tại' })
+            // }
             return res.json({ error })
         }
 

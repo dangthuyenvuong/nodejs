@@ -6,6 +6,8 @@ import { Category } from "./Category.model.js";
 import { OrderItem } from "./Orderitem.model.js";
 import { Wishlist } from "./Wishlist.model.js";
 import { UserAddress } from "./UserAddress.model.js";
+import { ChatGroup } from "./ChatGroup.model.js";
+import { Message } from "./Message.model.js";
 
 Order.belongsTo(User)
 User.hasMany(Order)
@@ -31,3 +33,14 @@ Wishlist.belongsTo(Product)
 Wishlist.belongsTo(User)
 
 
+
+
+ChatGroup.belongsToMany(User, { as: 'users', through: 'chat_group_user' })
+// ChatGroup.hasMany(User, { as: 'users' })
+User.belongsToMany(ChatGroup, { as: 'chatgroup', through: 'chat_group_user' })
+
+
+
+Message.belongsTo(User, { as: 'sender' })
+Message.belongsTo(ChatGroup)
+ChatGroup.hasMany(Message)
